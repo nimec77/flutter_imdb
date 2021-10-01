@@ -1,28 +1,37 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_imdb/app/data/providers/sqlite_provider.dart';
+import 'dart:async';
+import 'dart:developer';
 
-Future<void> main() async {
-  final sqliteProvider = SqliteProvider();
-  await sqliteProvider.open();
-  runApp(const MyApp());
-  await sqliteProvider.close();
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_imdb/app/presentation/app_bloc_observer.dart';
+import 'package:flutter_imdb/app/presentation/routes/init_guard.dart';
+import 'package:flutter_imdb/app/presentation/routes/route.gr.dart';
+
+void main() {
+  Bloc.observer = AppBlocObserver();
+  FlutterError.onError = (details) {
+    log(details.exceptionAsString(), stackTrace: details.stack);
+  };
+  runZonedGuarded(
+    () => runApp(ImdbApp()),
+    (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class ImdbApp extends StatelessWidget {
+  ImdbApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  final _appRouter = AppRouter(initGuard: InitGuard());
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Center(
-        child: Text('Imdb', style: Theme.of(context).textTheme.headline1),
-      ),
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
     );
   }
 }
-

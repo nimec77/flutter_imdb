@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_imdb/app/data/providers/sqlite_provider.dart';
 
-void main() {
+Future<void> main() async {
+  final sqliteProvider = SqliteProvider();
+  await sqliteProvider.open();
   runApp(const MyApp());
+  await sqliteProvider.close();
 }
 
 class MyApp extends StatelessWidget {

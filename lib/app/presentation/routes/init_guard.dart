@@ -4,6 +4,13 @@ import 'package:flutter_imdb/app/presentation/routes/route.gr.dart';
 class InitGuard extends AutoRouteGuard {
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-    router.push<bool>(InitRoute(onResult: (result) => resolver.next(result)));
+    router.push<bool>(InitRoute(onResult: (result) {
+      if (result) {
+        resolver.next();
+        router.popForced();
+      } else {
+        resolver.next(false);
+      }
+    }));
   }
 }

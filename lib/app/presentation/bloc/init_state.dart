@@ -7,4 +7,6 @@ class InitState with _$InitState {
   const factory InitState.inProgress() = InitStateInProgress;
 
   const factory InitState.success() = InitStateSuccess;
+
+  const factory InitState.failure(final Error error) = InitStateFailure;
 }

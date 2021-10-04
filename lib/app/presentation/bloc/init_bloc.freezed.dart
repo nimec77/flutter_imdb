@@ -188,6 +188,12 @@ class _$InitStateTearOff {
   InitStateSuccess success() {
     return const InitStateSuccess();
   }
+
+  InitStateFailure failure(Error error) {
+    return InitStateFailure(
+      error,
+    );
+  }
 }
 
 /// @nodoc
@@ -200,6 +206,7 @@ mixin _$InitState {
     required TResult Function() notInitialized,
     required TResult Function() inProgress,
     required TResult Function() success,
+    required TResult Function(Error error) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -207,6 +214,7 @@ mixin _$InitState {
     TResult Function()? notInitialized,
     TResult Function()? inProgress,
     TResult Function()? success,
+    TResult Function(Error error)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -214,6 +222,7 @@ mixin _$InitState {
     TResult Function()? notInitialized,
     TResult Function()? inProgress,
     TResult Function()? success,
+    TResult Function(Error error)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -222,6 +231,7 @@ mixin _$InitState {
     required TResult Function(InitStateNotInitialized value) notInitialized,
     required TResult Function(InitStateInProgress value) inProgress,
     required TResult Function(InitStateSuccess value) success,
+    required TResult Function(InitStateFailure value) failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -229,6 +239,7 @@ mixin _$InitState {
     TResult Function(InitStateNotInitialized value)? notInitialized,
     TResult Function(InitStateInProgress value)? inProgress,
     TResult Function(InitStateSuccess value)? success,
+    TResult Function(InitStateFailure value)? failure,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -236,6 +247,7 @@ mixin _$InitState {
     TResult Function(InitStateNotInitialized value)? notInitialized,
     TResult Function(InitStateInProgress value)? inProgress,
     TResult Function(InitStateSuccess value)? success,
+    TResult Function(InitStateFailure value)? failure,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -299,6 +311,7 @@ class _$InitStateNotInitialized implements InitStateNotInitialized {
     required TResult Function() notInitialized,
     required TResult Function() inProgress,
     required TResult Function() success,
+    required TResult Function(Error error) failure,
   }) {
     return notInitialized();
   }
@@ -309,6 +322,7 @@ class _$InitStateNotInitialized implements InitStateNotInitialized {
     TResult Function()? notInitialized,
     TResult Function()? inProgress,
     TResult Function()? success,
+    TResult Function(Error error)? failure,
   }) {
     return notInitialized?.call();
   }
@@ -319,6 +333,7 @@ class _$InitStateNotInitialized implements InitStateNotInitialized {
     TResult Function()? notInitialized,
     TResult Function()? inProgress,
     TResult Function()? success,
+    TResult Function(Error error)? failure,
     required TResult orElse(),
   }) {
     if (notInitialized != null) {
@@ -333,6 +348,7 @@ class _$InitStateNotInitialized implements InitStateNotInitialized {
     required TResult Function(InitStateNotInitialized value) notInitialized,
     required TResult Function(InitStateInProgress value) inProgress,
     required TResult Function(InitStateSuccess value) success,
+    required TResult Function(InitStateFailure value) failure,
   }) {
     return notInitialized(this);
   }
@@ -343,6 +359,7 @@ class _$InitStateNotInitialized implements InitStateNotInitialized {
     TResult Function(InitStateNotInitialized value)? notInitialized,
     TResult Function(InitStateInProgress value)? inProgress,
     TResult Function(InitStateSuccess value)? success,
+    TResult Function(InitStateFailure value)? failure,
   }) {
     return notInitialized?.call(this);
   }
@@ -353,6 +370,7 @@ class _$InitStateNotInitialized implements InitStateNotInitialized {
     TResult Function(InitStateNotInitialized value)? notInitialized,
     TResult Function(InitStateInProgress value)? inProgress,
     TResult Function(InitStateSuccess value)? success,
+    TResult Function(InitStateFailure value)? failure,
     required TResult orElse(),
   }) {
     if (notInitialized != null) {
@@ -409,6 +427,7 @@ class _$InitStateInProgress implements InitStateInProgress {
     required TResult Function() notInitialized,
     required TResult Function() inProgress,
     required TResult Function() success,
+    required TResult Function(Error error) failure,
   }) {
     return inProgress();
   }
@@ -419,6 +438,7 @@ class _$InitStateInProgress implements InitStateInProgress {
     TResult Function()? notInitialized,
     TResult Function()? inProgress,
     TResult Function()? success,
+    TResult Function(Error error)? failure,
   }) {
     return inProgress?.call();
   }
@@ -429,6 +449,7 @@ class _$InitStateInProgress implements InitStateInProgress {
     TResult Function()? notInitialized,
     TResult Function()? inProgress,
     TResult Function()? success,
+    TResult Function(Error error)? failure,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
@@ -443,6 +464,7 @@ class _$InitStateInProgress implements InitStateInProgress {
     required TResult Function(InitStateNotInitialized value) notInitialized,
     required TResult Function(InitStateInProgress value) inProgress,
     required TResult Function(InitStateSuccess value) success,
+    required TResult Function(InitStateFailure value) failure,
   }) {
     return inProgress(this);
   }
@@ -453,6 +475,7 @@ class _$InitStateInProgress implements InitStateInProgress {
     TResult Function(InitStateNotInitialized value)? notInitialized,
     TResult Function(InitStateInProgress value)? inProgress,
     TResult Function(InitStateSuccess value)? success,
+    TResult Function(InitStateFailure value)? failure,
   }) {
     return inProgress?.call(this);
   }
@@ -463,6 +486,7 @@ class _$InitStateInProgress implements InitStateInProgress {
     TResult Function(InitStateNotInitialized value)? notInitialized,
     TResult Function(InitStateInProgress value)? inProgress,
     TResult Function(InitStateSuccess value)? success,
+    TResult Function(InitStateFailure value)? failure,
     required TResult orElse(),
   }) {
     if (inProgress != null) {
@@ -518,6 +542,7 @@ class _$InitStateSuccess implements InitStateSuccess {
     required TResult Function() notInitialized,
     required TResult Function() inProgress,
     required TResult Function() success,
+    required TResult Function(Error error) failure,
   }) {
     return success();
   }
@@ -528,6 +553,7 @@ class _$InitStateSuccess implements InitStateSuccess {
     TResult Function()? notInitialized,
     TResult Function()? inProgress,
     TResult Function()? success,
+    TResult Function(Error error)? failure,
   }) {
     return success?.call();
   }
@@ -538,6 +564,7 @@ class _$InitStateSuccess implements InitStateSuccess {
     TResult Function()? notInitialized,
     TResult Function()? inProgress,
     TResult Function()? success,
+    TResult Function(Error error)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -552,6 +579,7 @@ class _$InitStateSuccess implements InitStateSuccess {
     required TResult Function(InitStateNotInitialized value) notInitialized,
     required TResult Function(InitStateInProgress value) inProgress,
     required TResult Function(InitStateSuccess value) success,
+    required TResult Function(InitStateFailure value) failure,
   }) {
     return success(this);
   }
@@ -562,6 +590,7 @@ class _$InitStateSuccess implements InitStateSuccess {
     TResult Function(InitStateNotInitialized value)? notInitialized,
     TResult Function(InitStateInProgress value)? inProgress,
     TResult Function(InitStateSuccess value)? success,
+    TResult Function(InitStateFailure value)? failure,
   }) {
     return success?.call(this);
   }
@@ -572,6 +601,7 @@ class _$InitStateSuccess implements InitStateSuccess {
     TResult Function(InitStateNotInitialized value)? notInitialized,
     TResult Function(InitStateInProgress value)? inProgress,
     TResult Function(InitStateSuccess value)? success,
+    TResult Function(InitStateFailure value)? failure,
     required TResult orElse(),
   }) {
     if (success != null) {
@@ -583,4 +613,149 @@ class _$InitStateSuccess implements InitStateSuccess {
 
 abstract class InitStateSuccess implements InitState {
   const factory InitStateSuccess() = _$InitStateSuccess;
+}
+
+/// @nodoc
+abstract class $InitStateFailureCopyWith<$Res> {
+  factory $InitStateFailureCopyWith(
+          InitStateFailure value, $Res Function(InitStateFailure) then) =
+      _$InitStateFailureCopyWithImpl<$Res>;
+  $Res call({Error error});
+}
+
+/// @nodoc
+class _$InitStateFailureCopyWithImpl<$Res> extends _$InitStateCopyWithImpl<$Res>
+    implements $InitStateFailureCopyWith<$Res> {
+  _$InitStateFailureCopyWithImpl(
+      InitStateFailure _value, $Res Function(InitStateFailure) _then)
+      : super(_value, (v) => _then(v as InitStateFailure));
+
+  @override
+  InitStateFailure get _value => super._value as InitStateFailure;
+
+  @override
+  $Res call({
+    Object? error = freezed,
+  }) {
+    return _then(InitStateFailure(
+      error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as Error,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$InitStateFailure implements InitStateFailure {
+  const _$InitStateFailure(this.error);
+
+  @override
+  final Error error;
+
+  @override
+  String toString() {
+    return 'InitState.failure(error: $error)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is InitStateFailure &&
+            (identical(other.error, error) ||
+                const DeepCollectionEquality().equals(other.error, error)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(error);
+
+  @JsonKey(ignore: true)
+  @override
+  $InitStateFailureCopyWith<InitStateFailure> get copyWith =>
+      _$InitStateFailureCopyWithImpl<InitStateFailure>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() notInitialized,
+    required TResult Function() inProgress,
+    required TResult Function() success,
+    required TResult Function(Error error) failure,
+  }) {
+    return failure(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? notInitialized,
+    TResult Function()? inProgress,
+    TResult Function()? success,
+    TResult Function(Error error)? failure,
+  }) {
+    return failure?.call(error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? notInitialized,
+    TResult Function()? inProgress,
+    TResult Function()? success,
+    TResult Function(Error error)? failure,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitStateNotInitialized value) notInitialized,
+    required TResult Function(InitStateInProgress value) inProgress,
+    required TResult Function(InitStateSuccess value) success,
+    required TResult Function(InitStateFailure value) failure,
+  }) {
+    return failure(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(InitStateNotInitialized value)? notInitialized,
+    TResult Function(InitStateInProgress value)? inProgress,
+    TResult Function(InitStateSuccess value)? success,
+    TResult Function(InitStateFailure value)? failure,
+  }) {
+    return failure?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitStateNotInitialized value)? notInitialized,
+    TResult Function(InitStateInProgress value)? inProgress,
+    TResult Function(InitStateSuccess value)? success,
+    TResult Function(InitStateFailure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (failure != null) {
+      return failure(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InitStateFailure implements InitState {
+  const factory InitStateFailure(Error error) = _$InitStateFailure;
+
+  Error get error => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $InitStateFailureCopyWith<InitStateFailure> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -26,9 +26,12 @@ class SqliteProvider {
   DatabaseConnection? _databaseConnection;
   MoorIsolate? _moorIsolate;
 
-  Future<Either<Error, DatabaseConnection>> open() async {
+  DatabaseConnection get databaseConnection =>
+      _databaseConnection != null ? _databaseConnection! : throw AssertionError('Init first');
+
+  Future<Either<Error, bool>> init() async {
     if (_databaseConnection != null) {
-      return Right(_databaseConnection!);
+      return const Right(true);
     }
 
     try {
@@ -36,13 +39,13 @@ class SqliteProvider {
         _moorIsolate = await _createMoorIsolate();
         return _moorIsolate!.connect();
       }());
-      return Right(_databaseConnection!);
+      return const Right(true);
     } on ArgumentError catch (error) {
       return Left(error);
     }
   }
 
-  Future<void> close() async {
+  Future<void> dispose() async {
     await _databaseConnection?.executor.close();
     await _databaseConnection?.streamQueries.close();
     _databaseConnection = null;

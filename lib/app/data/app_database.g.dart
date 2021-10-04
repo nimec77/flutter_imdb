@@ -7,7 +7,7 @@ part of 'app_database.dart';
 // **************************************************************************
 
 // ignore_for_file: unnecessary_brace_in_string_interps, unnecessary_this
-class MovieTitle extends DataClass implements Insertable<MovieTitle> {
+class MovieTitleData extends DataClass implements Insertable<MovieTitleData> {
   final String titleId;
   final String type;
   final String primaryTitle;
@@ -17,7 +17,7 @@ class MovieTitle extends DataClass implements Insertable<MovieTitle> {
   final int? ended;
   final int? runtimeMinutes;
   final String genres;
-  MovieTitle(
+  MovieTitleData(
       {required this.titleId,
       required this.type,
       required this.primaryTitle,
@@ -27,10 +27,11 @@ class MovieTitle extends DataClass implements Insertable<MovieTitle> {
       this.ended,
       this.runtimeMinutes,
       required this.genres});
-  factory MovieTitle.fromData(Map<String, dynamic> data, GeneratedDatabase db,
+  factory MovieTitleData.fromData(
+      Map<String, dynamic> data, GeneratedDatabase db,
       {String? prefix}) {
     final effectivePrefix = prefix ?? '';
-    return MovieTitle(
+    return MovieTitleData(
       titleId: const StringType()
           .mapFromDatabaseResponse(data['${effectivePrefix}title_id'])!,
       type: const StringType()
@@ -91,10 +92,10 @@ class MovieTitle extends DataClass implements Insertable<MovieTitle> {
     );
   }
 
-  factory MovieTitle.fromJson(Map<String, dynamic> json,
+  factory MovieTitleData.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
     serializer ??= moorRuntimeOptions.defaultSerializer;
-    return MovieTitle(
+    return MovieTitleData(
       titleId: serializer.fromJson<String>(json['titleId']),
       type: serializer.fromJson<String>(json['type']),
       primaryTitle: serializer.fromJson<String>(json['primaryTitle']),
@@ -122,7 +123,7 @@ class MovieTitle extends DataClass implements Insertable<MovieTitle> {
     };
   }
 
-  MovieTitle copyWith(
+  MovieTitleData copyWith(
           {String? titleId,
           String? type,
           String? primaryTitle,
@@ -132,7 +133,7 @@ class MovieTitle extends DataClass implements Insertable<MovieTitle> {
           int? ended,
           int? runtimeMinutes,
           String? genres}) =>
-      MovieTitle(
+      MovieTitleData(
         titleId: titleId ?? this.titleId,
         type: type ?? this.type,
         primaryTitle: primaryTitle ?? this.primaryTitle,
@@ -145,7 +146,7 @@ class MovieTitle extends DataClass implements Insertable<MovieTitle> {
       );
   @override
   String toString() {
-    return (StringBuffer('MovieTitle(')
+    return (StringBuffer('MovieTitleData(')
           ..write('titleId: $titleId, ')
           ..write('type: $type, ')
           ..write('primaryTitle: $primaryTitle, ')
@@ -179,7 +180,7 @@ class MovieTitle extends DataClass implements Insertable<MovieTitle> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is MovieTitle &&
+      (other is MovieTitleData &&
           other.titleId == this.titleId &&
           other.type == this.type &&
           other.primaryTitle == this.primaryTitle &&
@@ -191,7 +192,7 @@ class MovieTitle extends DataClass implements Insertable<MovieTitle> {
           other.genres == this.genres);
 }
 
-class MoviesTitlesCompanion extends UpdateCompanion<MovieTitle> {
+class MoviesTitlesCompanion extends UpdateCompanion<MovieTitleData> {
   final Value<String> titleId;
   final Value<String> type;
   final Value<String> primaryTitle;
@@ -228,7 +229,7 @@ class MoviesTitlesCompanion extends UpdateCompanion<MovieTitle> {
         originalTitle = Value(originalTitle),
         isAdult = Value(isAdult),
         genres = Value(genres);
-  static Insertable<MovieTitle> custom({
+  static Insertable<MovieTitleData> custom({
     Expression<String>? titleId,
     Expression<String>? type,
     Expression<String>? primaryTitle,
@@ -326,7 +327,7 @@ class MoviesTitlesCompanion extends UpdateCompanion<MovieTitle> {
 }
 
 class $MoviesTitlesTable extends MoviesTitles
-    with TableInfo<$MoviesTitlesTable, MovieTitle> {
+    with TableInfo<$MoviesTitlesTable, MovieTitleData> {
   final GeneratedDatabase _db;
   final String? _alias;
   $MoviesTitlesTable(this._db, [this._alias]);
@@ -388,7 +389,7 @@ class $MoviesTitlesTable extends MoviesTitles
   @override
   String get actualTableName => 'titles';
   @override
-  VerificationContext validateIntegrity(Insertable<MovieTitle> instance,
+  VerificationContext validateIntegrity(Insertable<MovieTitleData> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -452,8 +453,8 @@ class $MoviesTitlesTable extends MoviesTitles
   @override
   Set<GeneratedColumn> get $primaryKey => {titleId};
   @override
-  MovieTitle map(Map<String, dynamic> data, {String? tablePrefix}) {
-    return MovieTitle.fromData(data, _db,
+  MovieTitleData map(Map<String, dynamic> data, {String? tablePrefix}) {
+    return MovieTitleData.fromData(data, _db,
         prefix: tablePrefix != null ? '$tablePrefix.' : null);
   }
 
@@ -467,7 +468,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(SqlTypeSystem.defaultInstance, e);
   _$AppDatabase.connect(DatabaseConnection c) : super.connect(c);
   late final $MoviesTitlesTable moviesTitles = $MoviesTitlesTable(this);
-  late final MovieTitleDao movieTitleDao = MovieTitleDao(this as AppDatabase);
+  late final MovieTitleDaoImp movieTitleDaoImp =
+      MovieTitleDaoImp(this as AppDatabase);
   @override
   Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
   @override

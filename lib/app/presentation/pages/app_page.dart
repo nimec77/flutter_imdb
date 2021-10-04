@@ -32,17 +32,16 @@ class _AppPageState extends State<AppPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<MoviesBloc>(
-      create: (context) => MoviesBloc(_appDatabase.movieTitleDao),
+      create: (context) => MoviesBloc(_appDatabase.movieTitleDaoImp),
       child: AutoTabsScaffold(
         appBarBuilder: (_, tabsRouter) => AppBar(
           title: const Text('Imdb'),
           centerTitle: true,
-          leading: const AutoBackButton(),
         ),
         routes: const [
-          MoviesListRouter(),
-          MoviesGridRouter(),
-          MoviesSearchRouter(),
+          MoviesListRoute(),
+          MoviesGridRoute(),
+          MoviesSearchRoute(),
         ],
         bottomNavigationBuilder: (_, tabsRouter) {
           return SalomonBottomBar(

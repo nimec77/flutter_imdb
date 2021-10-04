@@ -1,6 +1,6 @@
 import 'package:moor/moor.dart';
 
-@DataClassName('MovieTitle')
+@DataClassName('MovieTitleData')
 class MoviesTitles extends Table {
   @override
   String get tableName => 'titles';

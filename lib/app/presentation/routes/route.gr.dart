@@ -34,15 +34,15 @@ class AppRouter extends _i6.RootStackRouter {
           routeData: routeData,
           child: _i2.InitPage(key: args.key, onResult: args.onResult));
     },
-    MoviesListRouter.name: (routeData) {
+    MoviesListRoute.name: (routeData) {
       return _i6.MaterialPageX<void>(
           routeData: routeData, child: const _i3.MoviesListPage());
     },
-    MoviesGridRouter.name: (routeData) {
+    MoviesGridRoute.name: (routeData) {
       return _i6.MaterialPageX<void>(
           routeData: routeData, child: const _i4.MoviesGridPage());
     },
-    MoviesSearchRouter.name: (routeData) {
+    MoviesSearchRoute.name: (routeData) {
       return _i6.MaterialPageX<void>(
           routeData: routeData, child: const _i5.MoviesSearchPage());
     }
@@ -53,9 +53,9 @@ class AppRouter extends _i6.RootStackRouter {
         _i6.RouteConfig(AppRoute.name, path: '/', guards: [
           initGuard
         ], children: [
-          _i6.RouteConfig(MoviesListRouter.name, path: 'movies-list'),
-          _i6.RouteConfig(MoviesGridRouter.name, path: 'movies-grid'),
-          _i6.RouteConfig(MoviesSearchRouter.name, path: 'movies-search')
+          _i6.RouteConfig(MoviesListRoute.name, path: 'movies-list'),
+          _i6.RouteConfig(MoviesGridRoute.name, path: 'movies-grid'),
+          _i6.RouteConfig(MoviesSearchRoute.name, path: 'movies-search')
         ]),
         _i6.RouteConfig(InitRoute.name, path: 'init')
       ];
@@ -87,22 +87,22 @@ class InitRouteArgs {
 }
 
 /// generated route for [_i3.MoviesListPage]
-class MoviesListRouter extends _i6.PageRouteInfo<void> {
-  const MoviesListRouter() : super(name, path: 'movies-list');
+class MoviesListRoute extends _i6.PageRouteInfo<void> {
+  const MoviesListRoute() : super(name, path: 'movies-list');
 
-  static const String name = 'MoviesListRouter';
+  static const String name = 'MoviesListRoute';
 }
 
 /// generated route for [_i4.MoviesGridPage]
-class MoviesGridRouter extends _i6.PageRouteInfo<void> {
-  const MoviesGridRouter() : super(name, path: 'movies-grid');
+class MoviesGridRoute extends _i6.PageRouteInfo<void> {
+  const MoviesGridRoute() : super(name, path: 'movies-grid');
 
-  static const String name = 'MoviesGridRouter';
+  static const String name = 'MoviesGridRoute';
 }
 
 /// generated route for [_i5.MoviesSearchPage]
-class MoviesSearchRouter extends _i6.PageRouteInfo<void> {
-  const MoviesSearchRouter() : super(name, path: 'movies-search');
+class MoviesSearchRoute extends _i6.PageRouteInfo<void> {
+  const MoviesSearchRoute() : super(name, path: 'movies-search');
 
-  static const String name = 'MoviesSearchRouter';
+  static const String name = 'MoviesSearchRoute';
 }

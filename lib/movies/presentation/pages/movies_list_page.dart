@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_imdb/app/data/app_database.dart';
+import 'package:flutter_imdb/movies/domain/entities/movie_title.dart';
 import 'package:flutter_imdb/movies/presentation/blocs/movies_bloc.dart';
+import 'package:flutter_imdb/movies/presentation/widgets/failure_widget.dart';
+import 'package:flutter_imdb/movies/presentation/widgets/in_progress_widget.dart';
+import 'package:flutter_imdb/movies/presentation/widgets/init_widget.dart';
 
 class MoviesListPage extends StatefulWidget {
   const MoviesListPage({Key? key}) : super(key: key);
@@ -21,26 +24,14 @@ class _MoviesListPageState extends State<MoviesListPage> {
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesBloc, MoviesState>(
       builder: (context, state) {
-        return state.maybeMap(
-          init: (_) => _init(context),
-          inProgress: (_) => _inProgress(),
-          listSuccess: (state) => _success(context, state.moviesTitles),
-          failure: (state) => _failure(context, state.error),
-          orElse: () => _failure(context, AssertionError('Error state')),
+        return state.maybeWhen(
+          init: InitWidget.new,
+          inProgress: InProgressWidget.new,
+          listSuccess: (moviesTitles) => _success(context, moviesTitles),
+          failure: (error) => FailureWidget(error: error),
+          orElse: () => FailureWidget(error: AssertionError('Error state')),
         );
       },
-    );
-  }
-
-  Widget _init(BuildContext context) {
-    return Center(
-      child: Text('Init', style: Theme.of(context).textTheme.headline1),
-    );
-  }
-
-  Widget _inProgress() {
-    return const Center(
-      child: CircularProgressIndicator(),
     );
   }
 
@@ -56,12 +47,6 @@ class _MoviesListPageState extends State<MoviesListPage> {
           trailing: Text(movieTitle.genres, textAlign: TextAlign.right),
         );
       },
-    );
-  }
-
-  Widget _failure(BuildContext context, Error error) {
-    return Center(
-      child: Text(error.toString(), style: Theme.of(context).textTheme.headline1!.copyWith(color: Colors.red)),
     );
   }
 }

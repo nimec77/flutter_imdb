@@ -12,21 +12,22 @@ import 'package:flutter_imdb/movies/presentation/pages/movies_search_page.dart';
     AutoRoute<void>(
       path: '/',
       page: AppPage,
+      name: 'AppRoute',
       guards: [InitGuard],
       children: [
         AutoRoute<void>(
           path: 'movies-list',
-          name: 'MoviesListRouter',
+          name: 'MoviesListRoute',
           page: MoviesListPage,
         ),
         AutoRoute<void>(
           path: 'movies-grid',
-          name: 'MoviesGridRouter',
+          name: 'MoviesGridRoute',
           page: MoviesGridPage,
         ),
         AutoRoute<void>(
           path: 'movies-search',
-          name: 'MoviesSearchRouter',
+          name: 'MoviesSearchRoute',
           page: MoviesSearchPage,
         ),
       ],
@@ -34,6 +35,7 @@ import 'package:flutter_imdb/movies/presentation/pages/movies_search_page.dart';
     AutoRoute<bool>(
       path: 'init',
       page: InitPage,
+      name: 'InitRoute',
     ),
   ],
 )

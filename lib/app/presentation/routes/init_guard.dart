@@ -7,7 +7,7 @@ class InitGuard extends AutoRouteGuard {
     router.push<bool>(InitRoute(onResult: (result) {
       if (result) {
         resolver.next();
-        router.popForced();
+        // router.popForced();
       } else {
         resolver.next(false);
       }

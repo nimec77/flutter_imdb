@@ -314,8 +314,7 @@ class _$MoviesStateTearOff {
     );
   }
 
-  MoviesStateIterableSuccess iterableSuccess(
-      Iterable<MovieTitle> moviesTitles) {
+  MoviesStateIterableSuccess iterableSuccess(MovieTitleIterable moviesTitles) {
     return MoviesStateIterableSuccess(
       moviesTitles,
     );
@@ -338,8 +337,7 @@ mixin _$MoviesState {
     required TResult Function() init,
     required TResult Function() inProgress,
     required TResult Function(List<MovieTitle> moviesTitles) listSuccess,
-    required TResult Function(Iterable<MovieTitle> moviesTitles)
-        iterableSuccess,
+    required TResult Function(MovieTitleIterable moviesTitles) iterableSuccess,
     required TResult Function(Error error) failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -348,7 +346,7 @@ mixin _$MoviesState {
     TResult Function()? init,
     TResult Function()? inProgress,
     TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
-    TResult Function(Iterable<MovieTitle> moviesTitles)? iterableSuccess,
+    TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
   }) =>
       throw _privateConstructorUsedError;
@@ -357,7 +355,7 @@ mixin _$MoviesState {
     TResult Function()? init,
     TResult Function()? inProgress,
     TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
-    TResult Function(Iterable<MovieTitle> moviesTitles)? iterableSuccess,
+    TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
     required TResult orElse(),
   }) =>
@@ -451,8 +449,7 @@ class _$MoviesStateInit implements MoviesStateInit {
     required TResult Function() init,
     required TResult Function() inProgress,
     required TResult Function(List<MovieTitle> moviesTitles) listSuccess,
-    required TResult Function(Iterable<MovieTitle> moviesTitles)
-        iterableSuccess,
+    required TResult Function(MovieTitleIterable moviesTitles) iterableSuccess,
     required TResult Function(Error error) failure,
   }) {
     return init();
@@ -464,7 +461,7 @@ class _$MoviesStateInit implements MoviesStateInit {
     TResult Function()? init,
     TResult Function()? inProgress,
     TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
-    TResult Function(Iterable<MovieTitle> moviesTitles)? iterableSuccess,
+    TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
   }) {
     return init?.call();
@@ -476,7 +473,7 @@ class _$MoviesStateInit implements MoviesStateInit {
     TResult Function()? init,
     TResult Function()? inProgress,
     TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
-    TResult Function(Iterable<MovieTitle> moviesTitles)? iterableSuccess,
+    TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
     required TResult orElse(),
   }) {
@@ -574,8 +571,7 @@ class _$MoviesStateInProgress implements MoviesStateInProgress {
     required TResult Function() init,
     required TResult Function() inProgress,
     required TResult Function(List<MovieTitle> moviesTitles) listSuccess,
-    required TResult Function(Iterable<MovieTitle> moviesTitles)
-        iterableSuccess,
+    required TResult Function(MovieTitleIterable moviesTitles) iterableSuccess,
     required TResult Function(Error error) failure,
   }) {
     return inProgress();
@@ -587,7 +583,7 @@ class _$MoviesStateInProgress implements MoviesStateInProgress {
     TResult Function()? init,
     TResult Function()? inProgress,
     TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
-    TResult Function(Iterable<MovieTitle> moviesTitles)? iterableSuccess,
+    TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
   }) {
     return inProgress?.call();
@@ -599,7 +595,7 @@ class _$MoviesStateInProgress implements MoviesStateInProgress {
     TResult Function()? init,
     TResult Function()? inProgress,
     TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
-    TResult Function(Iterable<MovieTitle> moviesTitles)? iterableSuccess,
+    TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
     required TResult orElse(),
   }) {
@@ -724,8 +720,7 @@ class _$MoviesStateListSuccess implements MoviesStateListSuccess {
     required TResult Function() init,
     required TResult Function() inProgress,
     required TResult Function(List<MovieTitle> moviesTitles) listSuccess,
-    required TResult Function(Iterable<MovieTitle> moviesTitles)
-        iterableSuccess,
+    required TResult Function(MovieTitleIterable moviesTitles) iterableSuccess,
     required TResult Function(Error error) failure,
   }) {
     return listSuccess(moviesTitles);
@@ -737,7 +732,7 @@ class _$MoviesStateListSuccess implements MoviesStateListSuccess {
     TResult Function()? init,
     TResult Function()? inProgress,
     TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
-    TResult Function(Iterable<MovieTitle> moviesTitles)? iterableSuccess,
+    TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
   }) {
     return listSuccess?.call(moviesTitles);
@@ -749,7 +744,7 @@ class _$MoviesStateListSuccess implements MoviesStateListSuccess {
     TResult Function()? init,
     TResult Function()? inProgress,
     TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
-    TResult Function(Iterable<MovieTitle> moviesTitles)? iterableSuccess,
+    TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
     required TResult orElse(),
   }) {
@@ -815,7 +810,7 @@ abstract class $MoviesStateIterableSuccessCopyWith<$Res> {
   factory $MoviesStateIterableSuccessCopyWith(MoviesStateIterableSuccess value,
           $Res Function(MoviesStateIterableSuccess) then) =
       _$MoviesStateIterableSuccessCopyWithImpl<$Res>;
-  $Res call({Iterable<MovieTitle> moviesTitles});
+  $Res call({MovieTitleIterable moviesTitles});
 }
 
 /// @nodoc
@@ -838,7 +833,7 @@ class _$MoviesStateIterableSuccessCopyWithImpl<$Res>
       moviesTitles == freezed
           ? _value.moviesTitles
           : moviesTitles // ignore: cast_nullable_to_non_nullable
-              as Iterable<MovieTitle>,
+              as MovieTitleIterable,
     ));
   }
 }
@@ -849,7 +844,7 @@ class _$MoviesStateIterableSuccess implements MoviesStateIterableSuccess {
   const _$MoviesStateIterableSuccess(this.moviesTitles);
 
   @override
-  final Iterable<MovieTitle> moviesTitles;
+  final MovieTitleIterable moviesTitles;
 
   @override
   String toString() {
@@ -882,8 +877,7 @@ class _$MoviesStateIterableSuccess implements MoviesStateIterableSuccess {
     required TResult Function() init,
     required TResult Function() inProgress,
     required TResult Function(List<MovieTitle> moviesTitles) listSuccess,
-    required TResult Function(Iterable<MovieTitle> moviesTitles)
-        iterableSuccess,
+    required TResult Function(MovieTitleIterable moviesTitles) iterableSuccess,
     required TResult Function(Error error) failure,
   }) {
     return iterableSuccess(moviesTitles);
@@ -895,7 +889,7 @@ class _$MoviesStateIterableSuccess implements MoviesStateIterableSuccess {
     TResult Function()? init,
     TResult Function()? inProgress,
     TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
-    TResult Function(Iterable<MovieTitle> moviesTitles)? iterableSuccess,
+    TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
   }) {
     return iterableSuccess?.call(moviesTitles);
@@ -907,7 +901,7 @@ class _$MoviesStateIterableSuccess implements MoviesStateIterableSuccess {
     TResult Function()? init,
     TResult Function()? inProgress,
     TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
-    TResult Function(Iterable<MovieTitle> moviesTitles)? iterableSuccess,
+    TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
     required TResult orElse(),
   }) {
@@ -959,10 +953,10 @@ class _$MoviesStateIterableSuccess implements MoviesStateIterableSuccess {
 }
 
 abstract class MoviesStateIterableSuccess implements MoviesState {
-  const factory MoviesStateIterableSuccess(Iterable<MovieTitle> moviesTitles) =
+  const factory MoviesStateIterableSuccess(MovieTitleIterable moviesTitles) =
       _$MoviesStateIterableSuccess;
 
-  Iterable<MovieTitle> get moviesTitles => throw _privateConstructorUsedError;
+  MovieTitleIterable get moviesTitles => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $MoviesStateIterableSuccessCopyWith<MoviesStateIterableSuccess>
       get copyWith => throw _privateConstructorUsedError;
@@ -1036,8 +1030,7 @@ class _$MoviesStateFailure implements MoviesStateFailure {
     required TResult Function() init,
     required TResult Function() inProgress,
     required TResult Function(List<MovieTitle> moviesTitles) listSuccess,
-    required TResult Function(Iterable<MovieTitle> moviesTitles)
-        iterableSuccess,
+    required TResult Function(MovieTitleIterable moviesTitles) iterableSuccess,
     required TResult Function(Error error) failure,
   }) {
     return failure(error);
@@ -1049,7 +1042,7 @@ class _$MoviesStateFailure implements MoviesStateFailure {
     TResult Function()? init,
     TResult Function()? inProgress,
     TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
-    TResult Function(Iterable<MovieTitle> moviesTitles)? iterableSuccess,
+    TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
   }) {
     return failure?.call(error);
@@ -1061,7 +1054,7 @@ class _$MoviesStateFailure implements MoviesStateFailure {
     TResult Function()? init,
     TResult Function()? inProgress,
     TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
-    TResult Function(Iterable<MovieTitle> moviesTitles)? iterableSuccess,
+    TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
     required TResult orElse(),
   }) {

@@ -16,23 +16,6 @@ class MovieTitleDaoImp extends DatabaseAccessor<AppDatabase> with _$MovieTitleDa
 
   final AppDatabase db;
 
-  // Future<EitherMoviesList> getMoviesList(int limit, {int? offset, bool? next}) async {
-  //   try {
-  //     final titles = await (select(moviesTitles)
-  //           ..limit(limit, offset: offset)
-  //           ..orderBy([
-  //             (t) => OrderingTerm(
-  //                   expression: t.titleId,
-  //                   mode: (next ?? true) ? OrderingMode.asc : OrderingMode.desc,
-  //                 )
-  //           ]))
-  //         .get();
-  //     return Right(titles.map((e) => e.toMovieTitle()).toList());
-  //   } on StateError catch (error) {
-  //     return Left(error);
-  //   }
-  // }
-
   @override
   Future<EitherMoviesList> getMoviesListNext(String titleId, int limit) async {
     try {
@@ -55,6 +38,7 @@ class MovieTitleDaoImp extends DatabaseAccessor<AppDatabase> with _$MovieTitleDa
         ..orderBy([(tbl) => OrderingTerm(expression: tbl.titleId)])
         ..limit(limit);
       final titles = await query.get();
+      print(titles.map((e) => e.titleId));
       return Right(titles.map((e) => e.toMovieTitle()).toList());
     } on StateError catch (error) {
       return Left(error);

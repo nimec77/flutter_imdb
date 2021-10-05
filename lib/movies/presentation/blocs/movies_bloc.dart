@@ -5,7 +5,7 @@ import 'package:flutter_imdb/movies/domain/ports/movie_title_iterable.dart';
 import 'package:flutter_imdb/movies/presentation/pods/list_info.dart';
 import 'package:flutter_imdb/movies/presentation/pods/movies_titles_info.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:meta/meta.dart';
+import 'package:rxdart/rxdart.dart';
 
 part 'movies_bloc.freezed.dart';
 
@@ -17,8 +17,12 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   MoviesBloc(this.movieTitleDao) : super(const MoviesState.init()) {
     on<MoviesEventListStarted>(_mapStartedListToState);
     on<MoviesEventIterableStarted>(_mapStartedIterableToState);
-    on<MoviesEventNextList>(_mapNextListToState);
-    on<MoviesEventPrevList>(_mapPrevListToState);
+    on<MoviesEventNextList>(_mapNextListToState, transformer: debounceTime());
+    on<MoviesEventPrevList>(_mapPrevListToState, transformer: debounceTime());
+  }
+
+  EventTransformer<MoviesEvent> debounceTime<MoviesEvent>() {
+    return (events, mapper) => events.debounceTime(const Duration(milliseconds: 300)).flatMap(mapper);
   }
 
   final requestSize = 20;
@@ -30,7 +34,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
 
   Future<void> _mapStartedListToState(MoviesEventListStarted event, Emitter<MoviesState> emit) async {
     emit(const MoviesState.inProgress());
-    await _getNext(emit, 'tt0000001', requestSize);
+    await _getNext(emit, 'tt0000000', requestSize);
   }
 
   Future<void> _getNext(Emitter<MoviesState> emit, String titleId, int limit) async {
@@ -39,6 +43,9 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
       (error) => emit(MoviesState.failure(error)),
       (moviesTitles) {
         if (moviesTitles.isEmpty) {
+          _listInfo = _listInfo.copyWith(
+            hasReachedEnd: true,
+          );
           emit(MoviesState.listSuccess(moviesTitles: _list, listInfo: _listInfo));
           return;
         }
@@ -55,10 +62,17 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
           length: _listInfo.length + length,
           hasReachedEnd: length != requestSize,
         );
-        _moviesTitlesInfo = _moviesTitlesInfo.copyWith(endTitleId: moviesTitles.last.titleId);
+        if (_list.length > maxSize) {
+          _list = _list.sublist(requestSize);
+          _listInfo = _listInfo.copyWith(
+            start: _listInfo.start + requestSize,
+          );
+          _moviesTitlesInfo = _moviesTitlesInfo.copyWith(startTitleId: _list.first.titleId);
+        }
+        _moviesTitlesInfo = _moviesTitlesInfo.copyWith(endTitleId: _list.last.titleId);
+        emit(MoviesState.listSuccess(moviesTitles: _list, listInfo: _listInfo));
       },
     );
-    emit(MoviesState.listSuccess(moviesTitles: _list, listInfo: _listInfo));
   }
 
   Future<void> _mapNextListToState(MoviesEventNextList event, Emitter<MoviesState> emit) async {
@@ -66,7 +80,38 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   }
 
   Future<void> _mapPrevListToState(MoviesEventPrevList event, Emitter<MoviesState> emit) async {
-    // await _getNext(emit, next: false);
+    await _getPrev(emit, _moviesTitlesInfo.startTitleId, requestSize);
+  }
+
+  Future<void> _getPrev(Emitter<MoviesState> emit, String titleId, int limit) async {
+    final moviesTitlesEither = await movieTitleDao.getMoviesListPrev(titleId, limit);
+    if (_listInfo.start == 0) {
+      return;
+    }
+    moviesTitlesEither.fold(
+      (error) => emit(MoviesState.failure(error)),
+      (moviesTitles) {
+        if (moviesTitles.isEmpty) {
+          emit(MoviesState.listSuccess(moviesTitles: _list, listInfo: _listInfo));
+        }
+        if (_listInfo.start == 0) {
+          return;
+        }
+        _list = moviesTitles + _list;
+        _listInfo = _listInfo.copyWith(
+          start: _listInfo.start - requestSize,
+        );
+        _moviesTitlesInfo = _moviesTitlesInfo.copyWith(startTitleId: _list.first.titleId);
+        if (_list.length > maxSize) {
+          _list = _list.sublist(0, _list.length - requestSize);
+          _listInfo = _listInfo.copyWith(
+            end: _listInfo.end - requestSize,
+          );
+          _moviesTitlesInfo = _moviesTitlesInfo.copyWith(endTitleId: _list.last.titleId);
+        }
+        emit(MoviesState.listSuccess(moviesTitles: _list, listInfo: _listInfo));
+      },
+    );
   }
 
   Future<void> _mapStartedIterableToState(MoviesEventIterableStarted event, Emitter<MoviesState> emit) async {}

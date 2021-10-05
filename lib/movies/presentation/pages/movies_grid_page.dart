@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_imdb/movies/domain/entities/movie_title.dart';
 import 'package:flutter_imdb/movies/domain/ports/movie_title_iterable.dart';
 import 'package:flutter_imdb/movies/presentation/blocs/movies_bloc.dart';
 import 'package:flutter_imdb/movies/presentation/widgets/failure_widget.dart';
@@ -28,6 +27,7 @@ class _MoviesGridPageState extends State<MoviesGridPage> {
         return state.maybeWhen(
           init: InitWidget.new,
           inProgress: InProgressWidget.new,
+          iterableSuccess: (moviesTitles) => _success(context, moviesTitles),
           failure: (error) => FailureWidget(error: error),
           orElse: () => FailureWidget(error: AssertionError('Error state')),
         );

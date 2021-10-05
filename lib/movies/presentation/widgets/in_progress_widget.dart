@@ -6,7 +6,10 @@ class InProgressWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: CircularProgressIndicator(),
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 10),
+        child: CircularProgressIndicator(),
+      ),
     );
   }
 }

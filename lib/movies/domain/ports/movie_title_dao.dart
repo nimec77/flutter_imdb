@@ -5,7 +5,9 @@ import 'package:flutter_imdb/movies/domain/ports/movie_title_iterable.dart';
 typedef EitherMoviesList = Either<Error, List<MovieTitle>>;
 
 abstract class MovieTitleDao {
-  Future<EitherMoviesList> getMoviesList(int limit, {int? offset});
+  Future<EitherMoviesList> getMoviesListNext(String titleId, int limit);
+
+  Future<EitherMoviesList> getMoviesListPrev(String titleId, int limit);
 
   MovieTitleIterable getMoviesIterable();
 }

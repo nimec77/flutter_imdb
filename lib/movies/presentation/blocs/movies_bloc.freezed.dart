@@ -24,6 +24,18 @@ class _$MoviesEventTearOff {
   MoviesEventIterableStarted iterableStarted() {
     return const MoviesEventIterableStarted();
   }
+
+  MoviesEventNextList nextList(ListInfo listInfo) {
+    return MoviesEventNextList(
+      listInfo,
+    );
+  }
+
+  MoviesEventPrevList prevList(ListInfo listInfo) {
+    return MoviesEventPrevList(
+      listInfo,
+    );
+  }
 }
 
 /// @nodoc
@@ -35,18 +47,24 @@ mixin _$MoviesEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() listStarted,
     required TResult Function() iterableStarted,
+    required TResult Function(ListInfo listInfo) nextList,
+    required TResult Function(ListInfo listInfo) prevList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? listStarted,
     TResult Function()? iterableStarted,
+    TResult Function(ListInfo listInfo)? nextList,
+    TResult Function(ListInfo listInfo)? prevList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? listStarted,
     TResult Function()? iterableStarted,
+    TResult Function(ListInfo listInfo)? nextList,
+    TResult Function(ListInfo listInfo)? prevList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -54,18 +72,24 @@ mixin _$MoviesEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(MoviesEventListStarted value) listStarted,
     required TResult Function(MoviesEventIterableStarted value) iterableStarted,
+    required TResult Function(MoviesEventNextList value) nextList,
+    required TResult Function(MoviesEventPrevList value) prevList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MoviesEventListStarted value)? listStarted,
     TResult Function(MoviesEventIterableStarted value)? iterableStarted,
+    TResult Function(MoviesEventNextList value)? nextList,
+    TResult Function(MoviesEventPrevList value)? prevList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MoviesEventListStarted value)? listStarted,
     TResult Function(MoviesEventIterableStarted value)? iterableStarted,
+    TResult Function(MoviesEventNextList value)? nextList,
+    TResult Function(MoviesEventPrevList value)? prevList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -129,6 +153,8 @@ class _$MoviesEventListStarted implements MoviesEventListStarted {
   TResult when<TResult extends Object?>({
     required TResult Function() listStarted,
     required TResult Function() iterableStarted,
+    required TResult Function(ListInfo listInfo) nextList,
+    required TResult Function(ListInfo listInfo) prevList,
   }) {
     return listStarted();
   }
@@ -138,6 +164,8 @@ class _$MoviesEventListStarted implements MoviesEventListStarted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? listStarted,
     TResult Function()? iterableStarted,
+    TResult Function(ListInfo listInfo)? nextList,
+    TResult Function(ListInfo listInfo)? prevList,
   }) {
     return listStarted?.call();
   }
@@ -147,6 +175,8 @@ class _$MoviesEventListStarted implements MoviesEventListStarted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? listStarted,
     TResult Function()? iterableStarted,
+    TResult Function(ListInfo listInfo)? nextList,
+    TResult Function(ListInfo listInfo)? prevList,
     required TResult orElse(),
   }) {
     if (listStarted != null) {
@@ -160,6 +190,8 @@ class _$MoviesEventListStarted implements MoviesEventListStarted {
   TResult map<TResult extends Object?>({
     required TResult Function(MoviesEventListStarted value) listStarted,
     required TResult Function(MoviesEventIterableStarted value) iterableStarted,
+    required TResult Function(MoviesEventNextList value) nextList,
+    required TResult Function(MoviesEventPrevList value) prevList,
   }) {
     return listStarted(this);
   }
@@ -169,6 +201,8 @@ class _$MoviesEventListStarted implements MoviesEventListStarted {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MoviesEventListStarted value)? listStarted,
     TResult Function(MoviesEventIterableStarted value)? iterableStarted,
+    TResult Function(MoviesEventNextList value)? nextList,
+    TResult Function(MoviesEventPrevList value)? prevList,
   }) {
     return listStarted?.call(this);
   }
@@ -178,6 +212,8 @@ class _$MoviesEventListStarted implements MoviesEventListStarted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MoviesEventListStarted value)? listStarted,
     TResult Function(MoviesEventIterableStarted value)? iterableStarted,
+    TResult Function(MoviesEventNextList value)? nextList,
+    TResult Function(MoviesEventPrevList value)? prevList,
     required TResult orElse(),
   }) {
     if (listStarted != null) {
@@ -234,6 +270,8 @@ class _$MoviesEventIterableStarted implements MoviesEventIterableStarted {
   TResult when<TResult extends Object?>({
     required TResult Function() listStarted,
     required TResult Function() iterableStarted,
+    required TResult Function(ListInfo listInfo) nextList,
+    required TResult Function(ListInfo listInfo) prevList,
   }) {
     return iterableStarted();
   }
@@ -243,6 +281,8 @@ class _$MoviesEventIterableStarted implements MoviesEventIterableStarted {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? listStarted,
     TResult Function()? iterableStarted,
+    TResult Function(ListInfo listInfo)? nextList,
+    TResult Function(ListInfo listInfo)? prevList,
   }) {
     return iterableStarted?.call();
   }
@@ -252,6 +292,8 @@ class _$MoviesEventIterableStarted implements MoviesEventIterableStarted {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? listStarted,
     TResult Function()? iterableStarted,
+    TResult Function(ListInfo listInfo)? nextList,
+    TResult Function(ListInfo listInfo)? prevList,
     required TResult orElse(),
   }) {
     if (iterableStarted != null) {
@@ -265,6 +307,8 @@ class _$MoviesEventIterableStarted implements MoviesEventIterableStarted {
   TResult map<TResult extends Object?>({
     required TResult Function(MoviesEventListStarted value) listStarted,
     required TResult Function(MoviesEventIterableStarted value) iterableStarted,
+    required TResult Function(MoviesEventNextList value) nextList,
+    required TResult Function(MoviesEventPrevList value) prevList,
   }) {
     return iterableStarted(this);
   }
@@ -274,6 +318,8 @@ class _$MoviesEventIterableStarted implements MoviesEventIterableStarted {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(MoviesEventListStarted value)? listStarted,
     TResult Function(MoviesEventIterableStarted value)? iterableStarted,
+    TResult Function(MoviesEventNextList value)? nextList,
+    TResult Function(MoviesEventPrevList value)? prevList,
   }) {
     return iterableStarted?.call(this);
   }
@@ -283,6 +329,8 @@ class _$MoviesEventIterableStarted implements MoviesEventIterableStarted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(MoviesEventListStarted value)? listStarted,
     TResult Function(MoviesEventIterableStarted value)? iterableStarted,
+    TResult Function(MoviesEventNextList value)? nextList,
+    TResult Function(MoviesEventPrevList value)? prevList,
     required TResult orElse(),
   }) {
     if (iterableStarted != null) {
@@ -297,6 +345,318 @@ abstract class MoviesEventIterableStarted implements MoviesEvent {
 }
 
 /// @nodoc
+abstract class $MoviesEventNextListCopyWith<$Res> {
+  factory $MoviesEventNextListCopyWith(
+          MoviesEventNextList value, $Res Function(MoviesEventNextList) then) =
+      _$MoviesEventNextListCopyWithImpl<$Res>;
+  $Res call({ListInfo listInfo});
+
+  $ListInfoCopyWith<$Res> get listInfo;
+}
+
+/// @nodoc
+class _$MoviesEventNextListCopyWithImpl<$Res>
+    extends _$MoviesEventCopyWithImpl<$Res>
+    implements $MoviesEventNextListCopyWith<$Res> {
+  _$MoviesEventNextListCopyWithImpl(
+      MoviesEventNextList _value, $Res Function(MoviesEventNextList) _then)
+      : super(_value, (v) => _then(v as MoviesEventNextList));
+
+  @override
+  MoviesEventNextList get _value => super._value as MoviesEventNextList;
+
+  @override
+  $Res call({
+    Object? listInfo = freezed,
+  }) {
+    return _then(MoviesEventNextList(
+      listInfo == freezed
+          ? _value.listInfo
+          : listInfo // ignore: cast_nullable_to_non_nullable
+              as ListInfo,
+    ));
+  }
+
+  @override
+  $ListInfoCopyWith<$Res> get listInfo {
+    return $ListInfoCopyWith<$Res>(_value.listInfo, (value) {
+      return _then(_value.copyWith(listInfo: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$MoviesEventNextList implements MoviesEventNextList {
+  const _$MoviesEventNextList(this.listInfo);
+
+  @override
+  final ListInfo listInfo;
+
+  @override
+  String toString() {
+    return 'MoviesEvent.nextList(listInfo: $listInfo)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is MoviesEventNextList &&
+            (identical(other.listInfo, listInfo) ||
+                const DeepCollectionEquality()
+                    .equals(other.listInfo, listInfo)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(listInfo);
+
+  @JsonKey(ignore: true)
+  @override
+  $MoviesEventNextListCopyWith<MoviesEventNextList> get copyWith =>
+      _$MoviesEventNextListCopyWithImpl<MoviesEventNextList>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() listStarted,
+    required TResult Function() iterableStarted,
+    required TResult Function(ListInfo listInfo) nextList,
+    required TResult Function(ListInfo listInfo) prevList,
+  }) {
+    return nextList(listInfo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? listStarted,
+    TResult Function()? iterableStarted,
+    TResult Function(ListInfo listInfo)? nextList,
+    TResult Function(ListInfo listInfo)? prevList,
+  }) {
+    return nextList?.call(listInfo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? listStarted,
+    TResult Function()? iterableStarted,
+    TResult Function(ListInfo listInfo)? nextList,
+    TResult Function(ListInfo listInfo)? prevList,
+    required TResult orElse(),
+  }) {
+    if (nextList != null) {
+      return nextList(listInfo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MoviesEventListStarted value) listStarted,
+    required TResult Function(MoviesEventIterableStarted value) iterableStarted,
+    required TResult Function(MoviesEventNextList value) nextList,
+    required TResult Function(MoviesEventPrevList value) prevList,
+  }) {
+    return nextList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(MoviesEventListStarted value)? listStarted,
+    TResult Function(MoviesEventIterableStarted value)? iterableStarted,
+    TResult Function(MoviesEventNextList value)? nextList,
+    TResult Function(MoviesEventPrevList value)? prevList,
+  }) {
+    return nextList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MoviesEventListStarted value)? listStarted,
+    TResult Function(MoviesEventIterableStarted value)? iterableStarted,
+    TResult Function(MoviesEventNextList value)? nextList,
+    TResult Function(MoviesEventPrevList value)? prevList,
+    required TResult orElse(),
+  }) {
+    if (nextList != null) {
+      return nextList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MoviesEventNextList implements MoviesEvent {
+  const factory MoviesEventNextList(ListInfo listInfo) = _$MoviesEventNextList;
+
+  ListInfo get listInfo => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $MoviesEventNextListCopyWith<MoviesEventNextList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MoviesEventPrevListCopyWith<$Res> {
+  factory $MoviesEventPrevListCopyWith(
+          MoviesEventPrevList value, $Res Function(MoviesEventPrevList) then) =
+      _$MoviesEventPrevListCopyWithImpl<$Res>;
+  $Res call({ListInfo listInfo});
+
+  $ListInfoCopyWith<$Res> get listInfo;
+}
+
+/// @nodoc
+class _$MoviesEventPrevListCopyWithImpl<$Res>
+    extends _$MoviesEventCopyWithImpl<$Res>
+    implements $MoviesEventPrevListCopyWith<$Res> {
+  _$MoviesEventPrevListCopyWithImpl(
+      MoviesEventPrevList _value, $Res Function(MoviesEventPrevList) _then)
+      : super(_value, (v) => _then(v as MoviesEventPrevList));
+
+  @override
+  MoviesEventPrevList get _value => super._value as MoviesEventPrevList;
+
+  @override
+  $Res call({
+    Object? listInfo = freezed,
+  }) {
+    return _then(MoviesEventPrevList(
+      listInfo == freezed
+          ? _value.listInfo
+          : listInfo // ignore: cast_nullable_to_non_nullable
+              as ListInfo,
+    ));
+  }
+
+  @override
+  $ListInfoCopyWith<$Res> get listInfo {
+    return $ListInfoCopyWith<$Res>(_value.listInfo, (value) {
+      return _then(_value.copyWith(listInfo: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$MoviesEventPrevList implements MoviesEventPrevList {
+  const _$MoviesEventPrevList(this.listInfo);
+
+  @override
+  final ListInfo listInfo;
+
+  @override
+  String toString() {
+    return 'MoviesEvent.prevList(listInfo: $listInfo)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is MoviesEventPrevList &&
+            (identical(other.listInfo, listInfo) ||
+                const DeepCollectionEquality()
+                    .equals(other.listInfo, listInfo)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(listInfo);
+
+  @JsonKey(ignore: true)
+  @override
+  $MoviesEventPrevListCopyWith<MoviesEventPrevList> get copyWith =>
+      _$MoviesEventPrevListCopyWithImpl<MoviesEventPrevList>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() listStarted,
+    required TResult Function() iterableStarted,
+    required TResult Function(ListInfo listInfo) nextList,
+    required TResult Function(ListInfo listInfo) prevList,
+  }) {
+    return prevList(listInfo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? listStarted,
+    TResult Function()? iterableStarted,
+    TResult Function(ListInfo listInfo)? nextList,
+    TResult Function(ListInfo listInfo)? prevList,
+  }) {
+    return prevList?.call(listInfo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? listStarted,
+    TResult Function()? iterableStarted,
+    TResult Function(ListInfo listInfo)? nextList,
+    TResult Function(ListInfo listInfo)? prevList,
+    required TResult orElse(),
+  }) {
+    if (prevList != null) {
+      return prevList(listInfo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MoviesEventListStarted value) listStarted,
+    required TResult Function(MoviesEventIterableStarted value) iterableStarted,
+    required TResult Function(MoviesEventNextList value) nextList,
+    required TResult Function(MoviesEventPrevList value) prevList,
+  }) {
+    return prevList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(MoviesEventListStarted value)? listStarted,
+    TResult Function(MoviesEventIterableStarted value)? iterableStarted,
+    TResult Function(MoviesEventNextList value)? nextList,
+    TResult Function(MoviesEventPrevList value)? prevList,
+  }) {
+    return prevList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MoviesEventListStarted value)? listStarted,
+    TResult Function(MoviesEventIterableStarted value)? iterableStarted,
+    TResult Function(MoviesEventNextList value)? nextList,
+    TResult Function(MoviesEventPrevList value)? prevList,
+    required TResult orElse(),
+  }) {
+    if (prevList != null) {
+      return prevList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MoviesEventPrevList implements MoviesEvent {
+  const factory MoviesEventPrevList(ListInfo listInfo) = _$MoviesEventPrevList;
+
+  ListInfo get listInfo => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $MoviesEventPrevListCopyWith<MoviesEventPrevList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$MoviesStateTearOff {
   const _$MoviesStateTearOff();
 
@@ -308,9 +668,11 @@ class _$MoviesStateTearOff {
     return const MoviesStateInProgress();
   }
 
-  MoviesStateListSuccess listSuccess(List<MovieTitle> moviesTitles) {
+  MoviesStateListSuccess listSuccess(
+      {required List<MovieTitle> moviesTitles, required ListInfo listInfo}) {
     return MoviesStateListSuccess(
-      moviesTitles,
+      moviesTitles: moviesTitles,
+      listInfo: listInfo,
     );
   }
 
@@ -336,7 +698,8 @@ mixin _$MoviesState {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() inProgress,
-    required TResult Function(List<MovieTitle> moviesTitles) listSuccess,
+    required TResult Function(List<MovieTitle> moviesTitles, ListInfo listInfo)
+        listSuccess,
     required TResult Function(MovieTitleIterable moviesTitles) iterableSuccess,
     required TResult Function(Error error) failure,
   }) =>
@@ -345,7 +708,8 @@ mixin _$MoviesState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? inProgress,
-    TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
+    TResult Function(List<MovieTitle> moviesTitles, ListInfo listInfo)?
+        listSuccess,
     TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
   }) =>
@@ -354,7 +718,8 @@ mixin _$MoviesState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? inProgress,
-    TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
+    TResult Function(List<MovieTitle> moviesTitles, ListInfo listInfo)?
+        listSuccess,
     TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
     required TResult orElse(),
@@ -448,7 +813,8 @@ class _$MoviesStateInit implements MoviesStateInit {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() inProgress,
-    required TResult Function(List<MovieTitle> moviesTitles) listSuccess,
+    required TResult Function(List<MovieTitle> moviesTitles, ListInfo listInfo)
+        listSuccess,
     required TResult Function(MovieTitleIterable moviesTitles) iterableSuccess,
     required TResult Function(Error error) failure,
   }) {
@@ -460,7 +826,8 @@ class _$MoviesStateInit implements MoviesStateInit {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? inProgress,
-    TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
+    TResult Function(List<MovieTitle> moviesTitles, ListInfo listInfo)?
+        listSuccess,
     TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
   }) {
@@ -472,7 +839,8 @@ class _$MoviesStateInit implements MoviesStateInit {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? inProgress,
-    TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
+    TResult Function(List<MovieTitle> moviesTitles, ListInfo listInfo)?
+        listSuccess,
     TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
     required TResult orElse(),
@@ -570,7 +938,8 @@ class _$MoviesStateInProgress implements MoviesStateInProgress {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() inProgress,
-    required TResult Function(List<MovieTitle> moviesTitles) listSuccess,
+    required TResult Function(List<MovieTitle> moviesTitles, ListInfo listInfo)
+        listSuccess,
     required TResult Function(MovieTitleIterable moviesTitles) iterableSuccess,
     required TResult Function(Error error) failure,
   }) {
@@ -582,7 +951,8 @@ class _$MoviesStateInProgress implements MoviesStateInProgress {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? inProgress,
-    TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
+    TResult Function(List<MovieTitle> moviesTitles, ListInfo listInfo)?
+        listSuccess,
     TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
   }) {
@@ -594,7 +964,8 @@ class _$MoviesStateInProgress implements MoviesStateInProgress {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? inProgress,
-    TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
+    TResult Function(List<MovieTitle> moviesTitles, ListInfo listInfo)?
+        listSuccess,
     TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
     required TResult orElse(),
@@ -655,7 +1026,9 @@ abstract class $MoviesStateListSuccessCopyWith<$Res> {
   factory $MoviesStateListSuccessCopyWith(MoviesStateListSuccess value,
           $Res Function(MoviesStateListSuccess) then) =
       _$MoviesStateListSuccessCopyWithImpl<$Res>;
-  $Res call({List<MovieTitle> moviesTitles});
+  $Res call({List<MovieTitle> moviesTitles, ListInfo listInfo});
+
+  $ListInfoCopyWith<$Res> get listInfo;
 }
 
 /// @nodoc
@@ -672,27 +1045,42 @@ class _$MoviesStateListSuccessCopyWithImpl<$Res>
   @override
   $Res call({
     Object? moviesTitles = freezed,
+    Object? listInfo = freezed,
   }) {
     return _then(MoviesStateListSuccess(
-      moviesTitles == freezed
+      moviesTitles: moviesTitles == freezed
           ? _value.moviesTitles
           : moviesTitles // ignore: cast_nullable_to_non_nullable
               as List<MovieTitle>,
+      listInfo: listInfo == freezed
+          ? _value.listInfo
+          : listInfo // ignore: cast_nullable_to_non_nullable
+              as ListInfo,
     ));
+  }
+
+  @override
+  $ListInfoCopyWith<$Res> get listInfo {
+    return $ListInfoCopyWith<$Res>(_value.listInfo, (value) {
+      return _then(_value.copyWith(listInfo: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$MoviesStateListSuccess implements MoviesStateListSuccess {
-  const _$MoviesStateListSuccess(this.moviesTitles);
+  const _$MoviesStateListSuccess(
+      {required this.moviesTitles, required this.listInfo});
 
   @override
   final List<MovieTitle> moviesTitles;
+  @override
+  final ListInfo listInfo;
 
   @override
   String toString() {
-    return 'MoviesState.listSuccess(moviesTitles: $moviesTitles)';
+    return 'MoviesState.listSuccess(moviesTitles: $moviesTitles, listInfo: $listInfo)';
   }
 
   @override
@@ -701,12 +1089,17 @@ class _$MoviesStateListSuccess implements MoviesStateListSuccess {
         (other is MoviesStateListSuccess &&
             (identical(other.moviesTitles, moviesTitles) ||
                 const DeepCollectionEquality()
-                    .equals(other.moviesTitles, moviesTitles)));
+                    .equals(other.moviesTitles, moviesTitles)) &&
+            (identical(other.listInfo, listInfo) ||
+                const DeepCollectionEquality()
+                    .equals(other.listInfo, listInfo)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(moviesTitles);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(moviesTitles) ^
+      const DeepCollectionEquality().hash(listInfo);
 
   @JsonKey(ignore: true)
   @override
@@ -719,11 +1112,12 @@ class _$MoviesStateListSuccess implements MoviesStateListSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() inProgress,
-    required TResult Function(List<MovieTitle> moviesTitles) listSuccess,
+    required TResult Function(List<MovieTitle> moviesTitles, ListInfo listInfo)
+        listSuccess,
     required TResult Function(MovieTitleIterable moviesTitles) iterableSuccess,
     required TResult Function(Error error) failure,
   }) {
-    return listSuccess(moviesTitles);
+    return listSuccess(moviesTitles, listInfo);
   }
 
   @override
@@ -731,11 +1125,12 @@ class _$MoviesStateListSuccess implements MoviesStateListSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? inProgress,
-    TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
+    TResult Function(List<MovieTitle> moviesTitles, ListInfo listInfo)?
+        listSuccess,
     TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
   }) {
-    return listSuccess?.call(moviesTitles);
+    return listSuccess?.call(moviesTitles, listInfo);
   }
 
   @override
@@ -743,13 +1138,14 @@ class _$MoviesStateListSuccess implements MoviesStateListSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? inProgress,
-    TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
+    TResult Function(List<MovieTitle> moviesTitles, ListInfo listInfo)?
+        listSuccess,
     TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
     required TResult orElse(),
   }) {
     if (listSuccess != null) {
-      return listSuccess(moviesTitles);
+      return listSuccess(moviesTitles, listInfo);
     }
     return orElse();
   }
@@ -796,10 +1192,12 @@ class _$MoviesStateListSuccess implements MoviesStateListSuccess {
 }
 
 abstract class MoviesStateListSuccess implements MoviesState {
-  const factory MoviesStateListSuccess(List<MovieTitle> moviesTitles) =
-      _$MoviesStateListSuccess;
+  const factory MoviesStateListSuccess(
+      {required List<MovieTitle> moviesTitles,
+      required ListInfo listInfo}) = _$MoviesStateListSuccess;
 
   List<MovieTitle> get moviesTitles => throw _privateConstructorUsedError;
+  ListInfo get listInfo => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $MoviesStateListSuccessCopyWith<MoviesStateListSuccess> get copyWith =>
       throw _privateConstructorUsedError;
@@ -876,7 +1274,8 @@ class _$MoviesStateIterableSuccess implements MoviesStateIterableSuccess {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() inProgress,
-    required TResult Function(List<MovieTitle> moviesTitles) listSuccess,
+    required TResult Function(List<MovieTitle> moviesTitles, ListInfo listInfo)
+        listSuccess,
     required TResult Function(MovieTitleIterable moviesTitles) iterableSuccess,
     required TResult Function(Error error) failure,
   }) {
@@ -888,7 +1287,8 @@ class _$MoviesStateIterableSuccess implements MoviesStateIterableSuccess {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? inProgress,
-    TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
+    TResult Function(List<MovieTitle> moviesTitles, ListInfo listInfo)?
+        listSuccess,
     TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
   }) {
@@ -900,7 +1300,8 @@ class _$MoviesStateIterableSuccess implements MoviesStateIterableSuccess {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? inProgress,
-    TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
+    TResult Function(List<MovieTitle> moviesTitles, ListInfo listInfo)?
+        listSuccess,
     TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
     required TResult orElse(),
@@ -1029,7 +1430,8 @@ class _$MoviesStateFailure implements MoviesStateFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() init,
     required TResult Function() inProgress,
-    required TResult Function(List<MovieTitle> moviesTitles) listSuccess,
+    required TResult Function(List<MovieTitle> moviesTitles, ListInfo listInfo)
+        listSuccess,
     required TResult Function(MovieTitleIterable moviesTitles) iterableSuccess,
     required TResult Function(Error error) failure,
   }) {
@@ -1041,7 +1443,8 @@ class _$MoviesStateFailure implements MoviesStateFailure {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? inProgress,
-    TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
+    TResult Function(List<MovieTitle> moviesTitles, ListInfo listInfo)?
+        listSuccess,
     TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
   }) {
@@ -1053,7 +1456,8 @@ class _$MoviesStateFailure implements MoviesStateFailure {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? init,
     TResult Function()? inProgress,
-    TResult Function(List<MovieTitle> moviesTitles)? listSuccess,
+    TResult Function(List<MovieTitle> moviesTitles, ListInfo listInfo)?
+        listSuccess,
     TResult Function(MovieTitleIterable moviesTitles)? iterableSuccess,
     TResult Function(Error error)? failure,
     required TResult orElse(),

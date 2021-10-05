@@ -6,7 +6,10 @@ class MoviesState with _$MoviesState {
 
   const factory MoviesState.inProgress() = MoviesStateInProgress;
 
-  const factory MoviesState.listSuccess(final List<MovieTitle> moviesTitles) = MoviesStateListSuccess;
+  const factory MoviesState.listSuccess({
+    required final List<MovieTitle> moviesTitles,
+    required final ListInfo listInfo,
+  }) = MoviesStateListSuccess;
 
   const factory MoviesState.iterableSuccess(final MovieTitleIterable moviesTitles) = MoviesStateIterableSuccess;
 

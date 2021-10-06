@@ -26,6 +26,7 @@ dependencies:
       url: https://github.com/nimec77/auto_route_library.git
       path: auto_route
   bloc: ^7.2.1
+  bloc_concurrency: ^0.1.0
   cupertino_icons: ^1.0.3
   dartz: ^0.10.0
   flutter:

@@ -1,4 +1,6 @@
+import 'dart:math' as math;
 import 'package:bloc/bloc.dart';
+import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter_imdb/movies/domain/entities/movie_title.dart';
 import 'package:flutter_imdb/movies/domain/ports/movie_title_dao.dart';
 import 'package:flutter_imdb/movies/domain/ports/movie_title_iterable.dart';
@@ -17,8 +19,8 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   MoviesBloc(this.movieTitleDao) : super(const MoviesState.init()) {
     on<MoviesEventListStarted>(_mapStartedListToState);
     on<MoviesEventIterableStarted>(_mapStartedIterableToState);
-    on<MoviesEventNextList>(_mapNextListToState, transformer: debounceTime());
-    on<MoviesEventPrevList>(_mapPrevListToState, transformer: debounceTime());
+    on<MoviesEventNextList>(_mapNextListToState, transformer: droppable());
+    on<MoviesEventPrevList>(_mapPrevListToState, transformer: droppable());
   }
 
   EventTransformer<MoviesEvent> debounceTime<MoviesEvent>() {
@@ -26,7 +28,7 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   }
 
   final requestSize = 100;
-  final maxSize = 400;
+  final maxSize = 200;
   final MovieTitleDao movieTitleDao;
   ListInfo _listInfo = const ListInfo(start: 0, end: 0, length: 0, hasReachedEnd: false);
   List<MovieTitle> _list = [];
@@ -57,9 +59,10 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
         }
         final length = moviesTitles.length;
         _list += moviesTitles;
+        final end = _listInfo.end + length;
         _listInfo = _listInfo.copyWith(
-          end: _listInfo.end + length,
-          length: _listInfo.length + length,
+          end: end,
+          length: math.max(end, _listInfo.length),
           hasReachedEnd: length != requestSize,
         );
         if (_list.length > maxSize) {

@@ -25,8 +25,8 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
     return (events, mapper) => events.debounceTime(const Duration(milliseconds: 300)).flatMap(mapper);
   }
 
-  final requestSize = 20;
-  final maxSize = 40;
+  final requestSize = 100;
+  final maxSize = 400;
   final MovieTitleDao movieTitleDao;
   ListInfo _listInfo = const ListInfo(start: 0, end: 0, length: 0, hasReachedEnd: false);
   List<MovieTitle> _list = [];
@@ -63,13 +63,15 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
           hasReachedEnd: length != requestSize,
         );
         if (_list.length > maxSize) {
-          _list = _list.sublist(requestSize);
+          _list = _list.sublist(length);
           _listInfo = _listInfo.copyWith(
-            start: _listInfo.start + requestSize,
+            start: _listInfo.start + length,
           );
           _moviesTitlesInfo = _moviesTitlesInfo.copyWith(startTitleId: _list.first.titleId);
         }
         _moviesTitlesInfo = _moviesTitlesInfo.copyWith(endTitleId: _list.last.titleId);
+        print(_moviesTitlesInfo);
+        print(_listInfo);
         emit(MoviesState.listSuccess(moviesTitles: _list, listInfo: _listInfo));
       },
     );
@@ -84,31 +86,31 @@ class MoviesBloc extends Bloc<MoviesEvent, MoviesState> {
   }
 
   Future<void> _getPrev(Emitter<MoviesState> emit, String titleId, int limit) async {
-    final moviesTitlesEither = await movieTitleDao.getMoviesListPrev(titleId, limit);
     if (_listInfo.start == 0) {
       return;
     }
+    final moviesTitlesEither = await movieTitleDao.getMoviesListPrev(titleId, limit);
     moviesTitlesEither.fold(
       (error) => emit(MoviesState.failure(error)),
       (moviesTitles) {
         if (moviesTitles.isEmpty) {
           emit(MoviesState.listSuccess(moviesTitles: _list, listInfo: _listInfo));
         }
-        if (_listInfo.start == 0) {
-          return;
-        }
+        final length = moviesTitles.length;
         _list = moviesTitles + _list;
         _listInfo = _listInfo.copyWith(
-          start: _listInfo.start - requestSize,
+          start: _listInfo.start - length,
         );
-        _moviesTitlesInfo = _moviesTitlesInfo.copyWith(startTitleId: _list.first.titleId);
         if (_list.length > maxSize) {
-          _list = _list.sublist(0, _list.length - requestSize);
+          _list = _list.sublist(0, _list.length - length);
           _listInfo = _listInfo.copyWith(
-            end: _listInfo.end - requestSize,
+            end: _listInfo.end - length,
           );
           _moviesTitlesInfo = _moviesTitlesInfo.copyWith(endTitleId: _list.last.titleId);
         }
+        _moviesTitlesInfo = _moviesTitlesInfo.copyWith(startTitleId: _list.first.titleId);
+        print(_moviesTitlesInfo);
+        print(_listInfo);
         emit(MoviesState.listSuccess(moviesTitles: _list, listInfo: _listInfo));
       },
     );

@@ -35,11 +35,11 @@ class MovieTitleDaoImp extends DatabaseAccessor<AppDatabase> with _$MovieTitleDa
     try {
       final query = select(moviesTitles)
         ..where((tbl) => tbl.titleId.isSmallerThanValue(titleId))
-        ..orderBy([(tbl) => OrderingTerm(expression: tbl.titleId)])
+        ..orderBy([(tbl) => OrderingTerm(expression: tbl.titleId, mode: OrderingMode.desc)])
         ..limit(limit);
       final titles = await query.get();
       print(titles.map((e) => e.titleId));
-      return Right(titles.map((e) => e.toMovieTitle()).toList());
+      return Right(titles.map((e) => e.toMovieTitle()).toList().reversed.toList());
     } on StateError catch (error) {
       return Left(error);
     }
